@@ -1,0 +1,14 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
+  "author": "Michael Alexander",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.11.0"
+  }
+}
