@@ -30,7 +30,7 @@ const BlogForm = ({ setBlogs, setOutcomeMessage, setVisibility }) => {
     // application so that a postBlog function is passed as props, I've added the if statment below for
     // tests
 
-    if (process.env.NODE_ENV === 'test') {
+    if (process.env.NODE_ENV === 'test-frontend') {
       setBlogs({ title, author, url })
       return
     }
