@@ -1,22 +1,5 @@
 const Blog = require('../models/blog')
 
-const blogObjectArray = [
-  {
-    title: 'Blogs are good in and of themselves',
-    author: 'Bob',
-    url: 'Dummy URL',
-    likes: 3,
-    user: '6669a545f0792bb2c23248ce',
-  },
-  {
-    title: 'Blogs are inferior to books',
-    author: 'Jim',
-    url: 'Dummy URL: The Sequel',
-    likes: 7,
-    user: '6669a594f0792bb2c23248d2',
-  }
-]
-
 const blogObjectUpdated = {
   title: 'Blogs are good in and of themselves',
   author: 'Bob',
@@ -65,7 +48,6 @@ const nonExistingID = async () => {
 }
 
 module.exports = {
-  blogObjectArray,
   blogObjectUpdated,
   blogObjectSingle,
   blogObjectWithoutLikes,
