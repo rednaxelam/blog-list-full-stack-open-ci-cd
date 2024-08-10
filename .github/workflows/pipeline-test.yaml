@@ -39,3 +39,7 @@ jobs:
           npm run test:backend
           cd ../frontend
           npm run test:frontend
+      - name: Build
+        run: |
+          cd backend
+          npm run build:ui
