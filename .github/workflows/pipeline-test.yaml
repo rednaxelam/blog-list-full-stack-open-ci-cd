@@ -27,3 +27,9 @@ jobs:
           npm install
           cd ../frontend
           npm install
+      - name: Check Style
+        run: |
+          cd backend
+          npm run lint:backend
+          cd ../frontend
+          npm run lint:frontend
