@@ -1,0 +1,29 @@
+name: Test Deployment pipeline
+
+on:
+  push:
+    branches:
+      - pipeline
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+env:
+  SKIP_CONDITION: ${{ github.event.commits == null || contains(github.event.commits[0].message, '#skip') }}
+
+jobs:
+  less_simple_deployment_pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependancies
+        run: |
+          cd backend
+          npm install
+          cd ../e2e/
+          npm install
+          cd ../frontend
+          npm install
