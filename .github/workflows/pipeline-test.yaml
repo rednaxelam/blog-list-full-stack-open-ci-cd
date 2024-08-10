@@ -33,3 +33,9 @@ jobs:
           npm run lint:backend
           cd ../frontend
           npm run lint:frontend
+      - name: Run tests
+        run: |
+          cd backend
+          npm run test:backend
+          cd ../frontend
+          npm run test:frontend
