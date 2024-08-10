@@ -19,25 +19,33 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install dependancies
+      - name: Install backend dependancies
         run: |
           cd backend
           npm install
-          cd ../e2e/
+      - name: Install e2e dependancies
+        run: |
+          cd e2e
           npm install
-          cd ../frontend
+      - name: Install frontend dependancies
+        run: |
+          cd frontend
           npm install
       - name: Check Style
         run: |
           cd backend
           npm run lint:backend
-          cd ../frontend
+      - name: Check frontend Style
+        run: |
+          cd frontend
           npm run lint:frontend
-      - name: Run tests
+      - name: Run backend tests
         run: |
           cd backend
           npm run test:backend
-          cd ../frontend
+      - name: Run frontend tests
+        run: |
+          cd frontend
           npm run test:frontend
       - name: Build
         run: |
