@@ -42,8 +42,7 @@ jobs:
       - name: Run backend tests
         run: |
           cd backend
-          set -o pipefail
-          NODE_ENV=test ./node_modules/.bin/jest --verbose --runInBand
+          npm run test:backend
       - name: Run frontend tests
         run: |
           cd frontend
