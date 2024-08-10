@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('login', ({ username, password }) => {
-  cy.request('POST', 'http://localhost:3003/api/login', {
+  cy.request('POST', '/api/login', {
     username, password
   }).then(response => {
     localStorage.setItem('loggedUser', JSON.stringify(response.body))
@@ -35,7 +35,7 @@ Cypress.Commands.add('login', ({ username, password }) => {
 
 Cypress.Commands.add('createBlog', ({ title, author, url, likes }) => {
   cy.request({
-    url: 'http://localhost:3003/api/blogs',
+    url: '/api/blogs',
     method: 'POST',
     body: { title, author, url, likes },
     headers: {
@@ -48,7 +48,7 @@ Cypress.Commands.add('createBlog', ({ title, author, url, likes }) => {
 Cypress.Commands.add('logInToNewUser', ({username, password, name}) => {
   localStorage.removeItem('loggedUser')
   const user = { username, password, name }
-  cy.request('POST', `${Cypress.env('BACKEND')}/users`, user)
+  cy.request('POST', `/api/users`, user)
   cy.login({ username, password})
   cy.visit('')
 })

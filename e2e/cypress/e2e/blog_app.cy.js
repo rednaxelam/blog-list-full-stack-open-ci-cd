@@ -1,12 +1,12 @@
 describe('Blog app', function() {
   beforeEach(function() {
-    cy.request('POST', `${Cypress.env('BACKEND')}/testing/reset`)
+    cy.request('POST', `/api/testing/reset`)
     const user = {
       username: 'mluukkai',
       password: 'salainen',
       name: 'Bob'
     }
-    cy.request('POST', `${Cypress.env('BACKEND')}/users`, user)
+    cy.request('POST', `/api/users`, user)
     cy.visit('')
   })
 
@@ -46,7 +46,7 @@ describe('Blog app', function() {
         cy.get('button[type="submit"]').click()
 
         cy.contains('example blog example author')
-        cy.request('GET', `${Cypress.env('BACKEND')}/blogs`)
+        cy.request('GET', `/api/blogs`)
           .then(response => {
             const savedblog = response.body[0]
             expect(savedblog.title).to.eql('example blog')
@@ -64,7 +64,7 @@ describe('Blog app', function() {
           cy.contains('likes').find('button').click()
 
           cy.contains('likes 4')
-          cy.request('GET', `${Cypress.env('BACKEND')}/blogs`)
+          cy.request('GET', `/api/blogs`)
           .then(response => {
             const savedblog = response.body[0]
             expect(savedblog.likes).to.eql(4)
@@ -77,7 +77,7 @@ describe('Blog app', function() {
           // cypress auto accepts confirmations, so don't need to do anything further to remove blog
           
           cy.contains('example blog example author').should('not.exist')
-          cy.request('GET', `${Cypress.env('BACKEND')}/blogs`)
+          cy.request('GET', `/api/blogs`)
           .then(response => {
             expect(response.body.length).to.eql(0)
           })

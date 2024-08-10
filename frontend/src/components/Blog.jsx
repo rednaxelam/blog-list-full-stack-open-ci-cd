@@ -13,13 +13,6 @@ const Blog = ({ blog, setBlogs, setOutcomeMessage, user }) => {
   }
 
   const likeBlog = async () => {
-    // the below is a compromise made for exercise 5.15: not wanting to restructure my application so
-    // that likeBlog is passed as a prop to the Blog component (and thus can be nicely mocked), I added the
-    // if statement below to just call the mock function when the like button is clicked
-    if (process.env.NODE_ENV === 'test') {
-      setBlogs('mock called')
-      return
-    }
     try {
       const newBlog = {
         title: blog.title,
