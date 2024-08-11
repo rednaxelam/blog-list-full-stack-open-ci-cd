@@ -51,3 +51,9 @@ jobs:
         run: |
           cd backend
           npm run build:ui
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: cd e2e && npm run test:e2e
+          start: cd backend && npm run start:test
+          wait-on: http://localhost:3000
