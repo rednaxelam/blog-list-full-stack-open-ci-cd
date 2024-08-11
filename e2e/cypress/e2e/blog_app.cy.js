@@ -107,9 +107,9 @@ describe('Blog app', function() {
           // the command below assumes that only the like button for blog 1 is visible
           cy.contains('likes').find('button').click()
           // wait for a little bit so the click has time to register
-          cy.wait(250)
+          cy.wait(600)
           cy.contains('likes').find('button').click()
-          cy.wait(250)
+          cy.wait(600)
           
           cy.get('.blog').eq(0).should('contain', 'blog 1')
           cy.get('.blog').eq(1).should('contain', 'blog 0')
