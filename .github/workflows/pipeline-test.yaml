@@ -1,5 +1,5 @@
 name: Test Deployment pipeline
-#
+
 on:
   push:
     branches:
@@ -41,6 +41,7 @@ jobs:
           echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
           echo TEST_MONGODB_URI=${{ secrets.TEST_MONGODB_URI }} >> .env
           echo SECRET=${{ secrets.SECRET }} >> .env
+          more .env
       - name: Run tests
         run: |
           cd backend
