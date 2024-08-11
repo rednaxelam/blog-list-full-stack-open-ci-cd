@@ -38,8 +38,8 @@ jobs:
           cd backend
           touch .env
           echo PORT=${{ secrets.PORT }} >> .env
-          echo "MONGODB_URI"=${{ secrets.MONGODB_URI }} >> .env
-          echo "TEST_MONGODB_URI"=${{ secrets.TEST_MONGODB_URI }} >> .env
+          echo MONGODB_URI="${{ secrets.MONGODB_URI }}" >> .env
+          echo TEST_MONGODB_URI="${{ secrets.TEST_MONGODB_URI }}" >> .env
           echo SECRET=${{ secrets.SECRET }} >> .env
           more .env
       - name: Run tests
