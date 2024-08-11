@@ -1,4 +1,4 @@
-name: Test Deployment pipeline
+name: Deployment pipeline
 
 on:
   push:
@@ -58,10 +58,10 @@ jobs:
         with:
           working-directory: e2e
           wait-on: http://localhost:3000
-      - name: set up for deployment
+      - name: Set up for deployment
         if: ${{ github.event_name == 'push' && env.SKIP_CONDITION == 'false'}}
         uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: deploy app
+      - name: Deploy app
         if: ${{ github.event_name == 'push' && env.SKIP_CONDITION == 'false'}}
         run: cd backend && flyctl deploy --remote-only
         env:
