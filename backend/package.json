@@ -6,8 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
-    "test:backend": "NODE_ENV=test jest --verbose --runInBand",
-    "lint": "eslint .",
+    "test:backend": "NODE_ENV=test jest --runInBand --forceExit",
+    "lint:backend": "eslint .",
     "start:test": "NODE_ENV=test node index.js",
     "build:ui": "rm -rf dist && cd ../frontend/ && npm run build && cp -r dist ../backend"
   },
@@ -31,7 +31,6 @@
     "mongoose-unique-validator": "^4.0.0"
   },
   "jest": {
-    "testEnvironment": "node",
-    "globalTeardown": "./tests/teardown.js"
+    "testEnvironment": "node"
   }
 }
