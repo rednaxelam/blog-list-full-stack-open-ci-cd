@@ -27,6 +27,14 @@ let BARRY53_TOKEN
 let blogObjectArray
 
 beforeAll ( async () => {
+  await api.post('/api/testing/reset').send()
+  await api
+    .post('/api/users')
+    .send({ username: 'mluukkai', password: 'salainen', name: 'Bob' })
+  await api
+    .post('/api/users')
+    .send({ username: 'barry53', password: 'pies', name: 'Barry' })
+
   const mluukkaiLoginResponseString = await api
     .post('/api/login')
     .send({ username: 'mluukkai', password: 'salainen' })
