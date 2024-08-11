@@ -27,26 +27,27 @@ jobs:
           npm install
           cd ../frontend
           npm install
-      # - name: Check Style
-      #   run: |
-      #     cd backend
-      #     npm run lint:backend
-      #     cd ../frontend
-      #     npm run lint:frontend
+      - name: Check Style
+        run: |
+          cd backend
+          npm run lint:backend
+          cd ../frontend
+          npm run lint:frontend
       - name: Create .env file
         run: |
           cd backend
           touch .env
           echo PORT=${{ secrets.PORT }} >> .env
-          echo test=test >> .env
-          more .env
-      # - name: Run tests
-      #   run: |
-      #     cd backend
-      #     npm run test:backend
-      #     cd ../frontend
-      #     npm run test:frontend
-      # - name: Build
-      #   run: |
-      #     cd backend
-      #     npm run build:ui
+          echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
+          echo TEST_MONGODB_URI=${{ secrets.TEST_MONGODB_URI }} >> .env
+          echo SECRET=${{ secrets.SECRET }} >> .env
+      - name: Run tests
+        run: |
+          cd backend
+          npm run test:backend
+          cd ../frontend
+          npm run test:frontend
+      - name: Build
+        run: |
+          cd backend
+          npm run build:ui
